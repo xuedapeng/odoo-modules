@@ -1,0 +1,11 @@
+<odoo>
+
+
+    <template id="assets_backend_bicon_mb_base_1" inherit_id="web.assets_backend" name="bicon_mb_base_assets_1">
+
+        <xpath expr="script[last()]" position="after">
+            <script type="text/javascript" src="/moqbus-iot/static/src/js/add_button.js"/>
+        </xpath>
+    </template>
+
+</odoo>

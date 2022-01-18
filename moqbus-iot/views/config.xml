@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="moqbus-iot.config_list">
+      <field name="name">config list</field>
+      <field name="model">moqbus.config</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="type"/>
+          <field name="gateway" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="moqbus-iot.config_form">
+      <field name="name">config form</field>
+      <field name="model">moqbus.config</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group name="group-all">
+              <group  name="group-left">
+                  <field name="name" />
+                  <field name="type" />
+                  <field name="project_id" style="width:20%%"/>
+              </group>
+              <group  name="group-right">
+                  <field name="url" />
+                  <field name="secret_id" />
+                  <field name="secret_key" password="True" />
+              </group>
+            </group>
+            <notebook>
+              <page string="网关">
+                  <field name="gateway" />
+              </page>
+              <page string="备注">
+                  <field name="description" />
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="moqbus-iot.config_action_window">
+      <field name="name">组态</field>
+      <field name="res_model">moqbus.config</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="moqbus-iot.action_server">
+      <field name="name">moqbus-iot server</field>
+      <field name="model_id" ref="model_moqbus-iot_moqbus-iot"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="物联设备" id="moqbus-iot.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="基础配置" id="moqbus-iot.menu_3" parent="moqbus-iot.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="组态" id="moqbus-iot.menu_3_config" parent="moqbus-iot.menu_3"
+              action="moqbus-iot.config_action_window"/>
+
+  </data>
+</odoo>

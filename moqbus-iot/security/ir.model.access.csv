@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_moqbus-iot_config,moqbus-iot.config,model_moqbus_config,base.group_user,1,1,1,1
+access_moqbus-iot_device,moqbus-iot.device,model_moqbus_device,base.group_user,1,1,1,1
+access_moqbus-iot_sensor_qxz,moqbus-iot.sensor_qxz,model_moqbus_sensor_qxz,base.group_user,1,1,1,1

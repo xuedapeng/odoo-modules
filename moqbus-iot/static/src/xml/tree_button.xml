@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template_moqbus_list" xml:space="preserve">
+    <t t-extend="ListView.buttons">
+      <t t-jquery="div.o_list_buttons" t-operation="append">
+<!--          <t t-if="widget.displayName == '气象站'">-->
+            <button class="btn btn-primary mb_list_refresh_btn" type="button" >刷新</button>
+<!--          </t>-->
+     </t>
+ </t>
+</templates>

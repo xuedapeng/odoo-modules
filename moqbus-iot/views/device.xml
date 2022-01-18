@@ -1,0 +1,82 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="moqbus-iot.device_list">
+      <field name="name">device list</field>
+      <field name="model">moqbus.device</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="device_sn"/>
+          <field name="device_id"/>
+          <field name="online"/>
+          <field name="ol_update_time"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="moqbus-iot.device_form">
+      <field name="name">device list</field>
+      <field name="model">moqbus.device</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="device_sn"/>
+                <field name="device_id"/>
+              </group>
+              <group>
+                <field name="online" readonly="True"/>
+                <field name="ol_update_time" readonly="True"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="备注">
+                <field name="description"/>
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="moqbus-iot.device_action_window">
+      <field name="name">设备</field>
+      <field name="res_model">moqbus.device</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="moqbus-iot.action_server">
+      <field name="name">moqbus-iot server</field>
+      <field name="model_id" ref="model_moqbus-iot_moqbus-iot"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+<!--    &lt;!&ndash; Top menu item &ndash;&gt;-->
+
+<!--    <menuitem name="物联设备" id="moqbus-iot.menu_root"/>-->
+
+<!--    &lt;!&ndash; menu categories &ndash;&gt;-->
+<!--    <menuitem name="气象站" id="moqbus-iot.menu_1" parent="moqbus-iot.menu_root"/>-->
+<!--    <menuitem name="电动阀" id="moqbus-iot.menu_2" parent="moqbus-iot.menu_root"/>-->
+<!--    <menuitem name="基础配置" id="moqbus-iot.menu_3" parent="moqbus-iot.menu_root"/>-->
+
+    <!-- actions -->
+    <menuitem name="设备" id="moqbus-iot.menu_3_device" parent="moqbus-iot.menu_3"
+              action="moqbus-iot.device_action_window"/>
+
+  </data>
+</odoo>
